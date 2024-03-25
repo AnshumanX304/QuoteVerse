@@ -9,6 +9,7 @@ import Profile from "../assets/profile.svg?react";
 import Sidebar from "../assets/Sidebar.svg?react";
 import Likered from "../assets/Likered.svg?react";
 import "./styles.css"
+// import Trendingside from "./Trendingside";
 const Quotes = (props) => {
     const [ishome,setIshome]=useState(true);
     useEffect(()=>{
@@ -40,8 +41,11 @@ const Quotes = (props) => {
                 <div className="m-2">
                     <img src={Like} onClick={()=>toggleLike()} alt="" />
                 </div>
-                <div className="mt-3 block md:hidden">
-                    <img src={Sidebar} alt="" />        
+                <div className="mt-3 block md:hidden" onClick={()=>toggleTrending()}>
+                    <img src={Sidebar} alt="" />     
+                </div>
+                <div>
+
                 </div>
             </div>
             <div className="pt-12">
@@ -57,6 +61,13 @@ const Quotes = (props) => {
 
 function HomePost(props){
     const [isliked,setIsliked]=useState(false);
+
+    useEffect(()=>{
+        let obj = props.likedpost.find(o => o._id === props.post._id);
+        if(obj){
+            setIsliked(true);
+        }
+    },[])
 
     function onLike(id){
         if(isliked==true){

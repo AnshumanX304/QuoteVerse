@@ -51,10 +51,10 @@ function Trend({trend,posts,setPosts}){
     }
     return(
         <div className="mb-6">
-            <div className=" font-extralight text-sm mb text-slate-500">
+            <div className=" font-extralight text-sm mb text-slate-500 ">
                 {trend.name.toUpperCase()}
             </div>
-            <div className=" my-1 font-medium text-sm" onClick={()=>getnewPosts(trend.slug)}>
+            <div className=" my-1 font-medium text-sm cursor-pointer" onClick={()=>getnewPosts(trend.slug)}>
                 #{trend.slug}
             </div>
             <div className=" font-extralight text-slate-500 text-xs">

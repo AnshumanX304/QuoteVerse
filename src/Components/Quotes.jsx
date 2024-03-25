@@ -31,6 +31,7 @@ const Quotes = (props) => {
         // console.log(posts);
         props.setPosts(posts.data);
 
+
     }
     return (
         <div>
@@ -49,9 +50,9 @@ const Quotes = (props) => {
                 </div>
             </div>
             <div className="pt-12">
-            {ishome?<div>{props.posts?props.posts.map(post => <HomePost ishome={ishome} post={post} key={post._id} likedpost={props.likedpost} setLikedpost={props.setLikedpost} posts={props.posts} />):<div>loading</div>}</div>
+            {ishome?<div>{(props.posts && !!props.posts.length)?props.posts.map(post => <HomePost ishome={ishome} post={post} key={post._id} likedpost={props.likedpost} setLikedpost={props.setLikedpost} posts={props.posts} />):<div className="h-screen w-screen md:w-full text-slate-400 flex justify-center items-center"><div>Loading......</div></div>}</div>
             :
-            <div>{props.likedpost?props.likedpost.map(post => <LikedPost ishome={ishome} post={post} key={post._id} likedpost={props.likedpost} setLikedpost={props.setLikedpost} posts={props.posts} />):<div>loading</div>}</div>}
+            <div>{(props.likedpost && !!props.likedpost.length)?props.likedpost.map(post => <LikedPost ishome={ishome} post={post} key={post._id} likedpost={props.likedpost} setLikedpost={props.setLikedpost} posts={props.posts} />):<div className="h-screen w-screen md:w-full  text-slate-400 flex justify-center items-center"><div>No liked Post in your feed</div></div>}</div>}
             
             </div>
             

@@ -22,7 +22,7 @@ function App() {
           <Personal/>
         </div>
 
-        <div className="lg:w-1/2 md:w-3/4 sm:w-screen border border-slate-600">
+        <div className="lg:w-1/2 md:w-3/4 sm:w-screen border border-slate-600 bg-black">
           <BrowserRouter>
               <Routes>
                 <Route exact path="/" element={<Quotes posts={posts} setPosts={setPosts} likedpost={likedpost} setLikedpost={setLikedpost}/>}/>

@@ -15,13 +15,13 @@ const  Personal= () => {
                         <img src={Profile} alt="" />
                     </div>
                     <div className="m-2 text-lg font-bold">
-                        <div>Jhon Doe</div>
+                        <div>Anshuman Tiwari</div>
                     </div>
                     <div className="mx-2 my-1 text-sm">
-                        <div>jhondoe</div>
+                        <div>anshumantiwari</div>
                     </div>
                     <div className="my-5 mx-2">
-                        <div>UI Developer | Let's redesign the world</div>
+                        <div>Frontend Developer | Let's redesign the world</div>
                     </div>
                     <div className="m-2 text-slate-500">
                         <div>2957 likes. </div>

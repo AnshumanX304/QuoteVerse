@@ -3,7 +3,7 @@ import Sidebar from "../assets/Sidebar.svg?react";
 import Settings from "../assets/settings.svg?react";
 import { useEffect,useState } from "react";
 
-const Trending = () => {
+const Trending = (props) => {
     const [trending,setTrending]=useState([]);
 
     useEffect(()=>{
@@ -11,14 +11,16 @@ const Trending = () => {
     },[])
 
     const gettrending=async ()=>{
-        const trenddata=await axios.get("https://api.quotable.io/tags");
+        const trenddata=await axios.get("https://api.quotable.io/tags?sortBy=quoteCount");
         console.log(trenddata.data)
         setTrending(trenddata.data);
     }
+
+    
     
     return ( 
-        <div>
-            <div className="flex flex-row-reverse border-b border-slate-600 h-11">
+        <div className="fixed w-1/4">
+            <div className="flex flex-row-reverse border-x border-y border-slate-600 h-11 bg-black">
                 <div className="my-4 mx-4 text-lg">
                     <img src={Sidebar} alt="" />
                 </div>
@@ -33,7 +35,7 @@ const Trending = () => {
                         <div className="text-sm my-6 text-sky-600">Show all quotes</div>
                     </div>
                     <div>
-                    {trending?trending.map(trend => <Trend trend={trend} key={trend._id} />):<div>loading</div>}
+                    {trending?trending.map(trend => <Trend trend={trend} key={trend._id}  posts={props.posts} setPosts={props.setPosts}/>):<div>loading</div>}
                     </div>
                 </div>
             </div>
@@ -41,13 +43,18 @@ const Trending = () => {
      );
 }
 
-function Trend({trend}){
+function Trend({trend,posts,setPosts}){
+    async function getnewPosts(props){
+         const data=await axios.get("https://api.quotable.io/quotes?tags="+props);
+         console.log(data);
+         setPosts(data.data.results);
+    }
     return(
         <div className="mb-6">
             <div className=" font-extralight text-sm mb text-slate-500">
                 {trend.name.toUpperCase()}
             </div>
-            <div className=" my-1 font-medium text-sm">
+            <div className=" my-1 font-medium text-sm" onClick={()=>getnewPosts(trend.slug)}>
                 #{trend.slug}
             </div>
             <div className=" font-extralight text-slate-500 text-xs">

@@ -2,8 +2,8 @@ import Profile from "../assets/profile.svg?react";
 
 const  Personal= () => {
     return ( 
-        <div>
-            <div className="flex justify-center items-center border-b border-slate-600 h-11">
+        <div className="fixed w-1/4">
+            <div className="flex justify-center items-center border-x border-y border-slate-600 h-11 bg-black">
                 <div className="my-2 text-lg">
                     Quoteverse
                 </div>

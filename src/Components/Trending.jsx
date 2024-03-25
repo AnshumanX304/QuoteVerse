@@ -12,7 +12,7 @@ const Trending = (props) => {
 
     const gettrending=async ()=>{
         const trenddata=await axios.get("https://api.quotable.io/tags?sortBy=quoteCount");
-        console.log(trenddata.data)
+        // console.log(trenddata.data)
         setTrending(trenddata.data);
     }
 
@@ -46,7 +46,7 @@ const Trending = (props) => {
 function Trend({trend,posts,setPosts}){
     async function getnewPosts(props){
          const data=await axios.get("https://api.quotable.io/quotes?tags="+props);
-         console.log(data);
+        //  console.log(data);
          setPosts(data.data.results);
     }
     return(

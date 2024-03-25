@@ -12,6 +12,7 @@ import { useState } from 'react'
 
 function App() {
   const [posts,setPosts]=useState([]);
+  const [likedpost,setLikedpost]=useState([]);
 
 
   return (
@@ -24,7 +25,7 @@ function App() {
         <div className="lg:w-1/2 md:w-3/4 sm:w-screen border border-slate-600">
           <BrowserRouter>
               <Routes>
-                <Route exact path="/" element={<Quotes posts={posts} setPosts={setPosts}/>}/>
+                <Route exact path="/" element={<Quotes posts={posts} setPosts={setPosts} likedpost={likedpost} setLikedpost={setLikedpost}/>}/>
               </Routes>
           </BrowserRouter>
           </div>

@@ -9,9 +9,10 @@ import Profile from "../assets/profile.svg?react";
 import Sidebar from "../assets/Sidebar.svg?react";
 import Likered from "../assets/Likered.svg?react";
 import "./styles.css"
-// import Trendingside from "./Trendingside";
+import Trendingside from "./Trendingside";
 const Quotes = (props) => {
     const [ishome,setIshome]=useState(true);
+    const [showmenu,setShowmenu]=useState(false);
     useEffect(()=>{
         getposts();
     },[])
@@ -22,6 +23,17 @@ const Quotes = (props) => {
 
     function toggleLike(){
         setIshome(false);
+    }
+
+    function toggleTrending(){
+        if(showmenu==true){
+            setShowmenu(false);
+        }
+        else{
+            setShowmenu(true);
+        }   
+
+
     }
 
     
@@ -35,15 +47,19 @@ const Quotes = (props) => {
     }
     return (
         <div>
-            <div className="w-full flex justify-evenly border-y border-x border-slate-600 h-11 mb-5 lg:w-1/2 md:w-3/4 fixed bg-black">
+            <div className="w-full flex justify-evenly border-y border-x border-slate-600 h-11 mb-5 lg:w-3/5 md:w-3/4 fixed bg-black">
                 <div className="m-2">
                    <img src={Home} onClick={()=>toggleHome()} alt="" />
                 </div>
                 <div className="m-2">
                     <img src={Like} onClick={()=>toggleLike()} alt="" />
+                    {showmenu?<div className="submenu" id="subMenu" >
+                        <Trendingside posts={props.posts} setPosts={props.setPosts} />  
+                    </div>:<div></div>}
                 </div>
-                <div className="mt-3 block md:hidden" onClick={()=>toggleTrending()}>
-                    <img src={Sidebar} alt="" />     
+                <div className="mt-3 block md:hidden" onClick={toggleTrending}>
+                    <img src={Sidebar} alt="" />  
+
                 </div>
                 <div>
 
